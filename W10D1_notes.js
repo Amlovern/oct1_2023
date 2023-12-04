@@ -61,4 +61,17 @@ In order to parse the request body, we have to use the express.json middleware
 
 !! Express works top => down !!
 
+
+Important Request object properties
+    req.body
+        Where the request body can be found
+        Requires app.use(express.json()) global middleware
+    req.params
+        Dynamic piece of the path
+        Use a ":" in the path to signify a param
+        Always come in as strings
+    req.query
+        Dynamic piece of the url
+        Starts with a "?"
+
 */

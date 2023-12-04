@@ -12,6 +12,18 @@ app.post('/create', (req, res) => {
     res.json(req.body)
 });
 
+app.get('/request', (req, res) => {
+    console.log(req)
+});
+
+app.get('/actors/:actorId/movies/:movieId', (req, res) => {
+    console.log(req.params)
+});
+
+app.get('/actors', (req, res) => {
+    console.log(req.query)
+})
+
 
 
 
