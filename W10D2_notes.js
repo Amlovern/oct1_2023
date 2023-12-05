@@ -32,6 +32,19 @@ Error Handling Middleware
         SRP/DRY
         Readability
 
+Routers
+    An extension of our app object
+    In our route file:
+        Import express
+        Create router object
+
+    Router objects behave like the app object in many ways, but not all
+
+    We must attach our router to our app
+        First we must export the router
+        Then we import the router into our app.js
+        Finally, we have to tell Express to use that router
+
 
 
 */
