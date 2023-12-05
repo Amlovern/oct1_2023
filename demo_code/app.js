@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
+const actorRouter = require('./routes/actors');
 
 app.use(express.json());
+
+app.use('/actors', actorRouter);
 
 const printPath = (req, _res, next) => {
     console.log(`path: ${req.path}`);
@@ -25,7 +28,7 @@ const checkUserInput = (req, res, next) => {
 //     next(error);
 // })
 
-app.get(['/test', '/status'], printPath, (err, req, res, next) => {
+app.get(['/test', '/status'], printPath, (req, res, next) => {
     res.send('Hello from your first express API!')
 });
 
@@ -38,14 +41,8 @@ app.get('/request', (req, res) => {
     console.log(req)
 });
 
-app.get('/actors/:actorId/movies/:movieId', (req, res) => {
-    console.log(req.params)
-});
 
-app.get('/actors', (req, res) => {
-    console.log(req.query)
-})
-
+// 404 Not Found Middleware
 app.use((req, res, next) => {
     const notFoundError = new Error(`${req.method} ${req.path} not found`);
     notFoundError.statusCode = 404;
