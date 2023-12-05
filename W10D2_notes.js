@@ -22,6 +22,16 @@ When anything is passed into next, Express behavior changes a lot
     To handle the error being passed, we have to create a way to catch that error
     Express assumes that route handler isn't meant to take in an error
 
+Error Handling Middleware
+    Takes in a 4th arg (err)
+    Generally at the end of the pipeline so that nothing is skipped and it can catch all the errors
+
+    Anytime we generate a new error, we need to add a statusCode property to that new Error
+
+    Why should we go through all of this work by setting up error handling middleware instead of just handling the errors in the routes?
+        SRP/DRY
+        Readability
+
 
 
 */
