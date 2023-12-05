@@ -46,5 +46,38 @@ Routers
         Finally, we have to tell Express to use that router
 
 
+Environment Variables
+
+    There are a few common environments we will work in
+        Production
+        Development (dev)
+        Testing - underutilized
+            A way to mimic the production env locally so that we can test changes without interferring with UX.
+        
+    What's the point?
+        Handling of variables that change based on environment
+        They are used to obscure sensitive data
+
+    A few ways to setup environment variables
+        Through the CLI
+            This can be really annoying to type out every time
+        Adding them to our scripts in our package.json
+            This defeats the purpose since we are pushing our package.json to github
+        Creating a .env file
+            !! We must add our .env to our .gitignore file !!
+            To access variables in our .env, we have to install a couple packages
+                npm install dotenv
+                npm install dotenv-cli
+                    Allows you to access the .env from the CLI
+            Next we must add some boilerplate code to our app.js
+                require('dotenv').config();
+                It is important that this is at the top of the file so that our whole app has access to the .env
+            We have to make sure that our .env file is on the same level as our package.json
+        Env variables that have a value that is longer than a single word require "" if they are in the CLI, but not if they are in the .env
+
+    
+    We can access environment variables using
+        process.env.<variable name>
+
 
 */

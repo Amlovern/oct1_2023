@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
+
 const actorRouter = require('./routes/actors');
 
 app.use(express.json());
@@ -40,6 +42,11 @@ app.post('/create', [printPath, checkUserInput], (req, res) => {
 app.get('/request', (req, res) => {
     console.log(req)
 });
+
+app.get('/env', (req, res) => {
+    console.log('env endpoint')
+    res.send(process.env.MESSAGE)
+})
 
 
 // 404 Not Found Middleware
