@@ -74,4 +74,7 @@ Important Request object properties
         Dynamic piece of the url
         Starts with a "?"
 
+
+!! Routes should be in order from most specific => least specific !!
+
 */
