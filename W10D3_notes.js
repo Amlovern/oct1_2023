@@ -50,7 +50,12 @@ Inserting Data into a DB
     For apostrophes, we use 2 single quotation marks
         i.e. 'Kiki''s Delivery Service'
 
+All queries need at least 2 SQL statements: SELECT and FROM
+    SELECT - What columns do we want?
+    FROM - What table are we querying?
 
+    WHERE - Allows us to filter or target specific values or sets of values
+        We can chain multiple filters using AND/OR
 
 
 */
