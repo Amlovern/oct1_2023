@@ -58,4 +58,12 @@ All queries need at least 2 SQL statements: SELECT and FROM
         We can chain multiple filters using AND/OR
 
 
+Deleting and Updating data in the DB
+    Delete - DELETE FROM <table name> WHERE <condition>;
+        Note that if we leave off the WHERE clause, it will delete all of the data on the table
+    Updating - UPDATE <table name> SET <col name> = <value> WHERE <condition>;
+        Again, the WHERE clause is not required. If we leave it off, it will update EVERY record to have the new value.
+
+
+
 */
