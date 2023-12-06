@@ -23,3 +23,7 @@ CREATE TABLE games (
     online BOOLEAN,
     metacritic_score DECIMAL(2,1)
 );
+
+INSERT INTO games (name, release_year, esrb_rating, studio, sales, description, genre, online, metacritic_score)
+VALUES
+('Tetris', 1984, 'E', 'Mirrorsoft', 520000000, 'Drop shapes, make lines, rage', 'Puzzle', false, 7.8);
