@@ -64,6 +64,4 @@ Deleting and Updating data in the DB
     Updating - UPDATE <table name> SET <col name> = <value> WHERE <condition>;
         Again, the WHERE clause is not required. If we leave it off, it will update EVERY record to have the new value.
 
-
-
 */
