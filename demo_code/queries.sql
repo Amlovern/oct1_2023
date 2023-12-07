@@ -65,3 +65,5 @@ JOIN studios ON (studios.id = studio_games.studio_id)
 WHERE studios.year_established >= 2002
 ORDER BY metacritic_score DESC
 LIMIT 1;
+
+SELECT DISTINCT esrb_rating FROM games;

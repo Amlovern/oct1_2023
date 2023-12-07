@@ -40,6 +40,8 @@ New Query Keywords
         OFFSET <value>;
         Can only be used in conjunction with LIMIT
         Usually used in Pagination
+    DISTINCT - return only distinct (different) values
+        SELECT DISTINCT <col> FROM <table>;
     We can also perform math operations to columns in a SELECT
         SELECT <col> + <value> FROM <table>;
         This doesn't actually change anything in the DB
@@ -51,7 +53,5 @@ Writing queries that join different tables together
     JOIN <table> ON (<table>.id = <other table>.<FK col>)
     The ON keyword is what tells SQL what the association is and how to connect them
     Use dot notation to deal with column name ambiguity
-
-
 
 */
