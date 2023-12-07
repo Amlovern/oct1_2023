@@ -21,9 +21,31 @@ What about (chain) deleting?
     ON DELETE SET NULL
 
 
+New Query Keywords
+    BETWEEN - inclusive
+        WHERE <col> BETWEEN <value 1> AND <value 2>;
+    IN - something is true from a group of possibilities
+        WHERE <col> IN (<comma separated values>);
+    LIKE - search for partial strings
+        WHERE <col> LIKE %<partial string>%;
+        Wildcard character = %
+        Case insensitive in SQLite
+    ORDER BY - allows us to go against default ordering behavior
+        ORDER BY <col>;
+        Default order is ASC, but can add DESC to our command to reverse that
+        Can order by multiple factors by adding more cols separated by a comma
+    LIMIT - only return a certain number of records
+        LIMIT <value>;
+    OFFSET - skip a certain number of records
+        OFFSET <value>;
+        Can only be used in conjunction with LIMIT
+        Usually used in Pagination
+    We can also perform math operations to columns in a SELECT
+        SELECT <col> + <value> FROM <table>;
+        This doesn't actually change anything in the DB
+    We can also alias our columns in a SELECT
+        SELECT <column> AS <alias> FROM <table>;
 
 
 
-                surprise uwu
-                uwus in the chat 👉👈
 */
