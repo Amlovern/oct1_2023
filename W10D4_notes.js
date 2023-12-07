@@ -47,5 +47,11 @@ New Query Keywords
         SELECT <column> AS <alias> FROM <table>;
 
 
+Writing queries that join different tables together
+    JOIN <table> ON (<table>.id = <other table>.<FK col>)
+    The ON keyword is what tells SQL what the association is and how to connect them
+    Use dot notation to deal with column name ambiguity
+
+
 
 */
