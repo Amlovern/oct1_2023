@@ -19,9 +19,10 @@ CREATE TABLE games (
     studio VARCHAR(50) NOT NULL,
     sold_units INTEGER,
     description TEXT,
-    genre VARCHAR(20),
+    genre_id INTEGER REFERENCES genres(id),
     online BOOLEAN,
     metacritic_score DECIMAL(2,1)
+    -- FOREIGN KEY (genre_id) REFERENCES genres(id)
 );
 
 INSERT INTO games (name, release_year, esrb_rating, studio, sold_units, description, genre, online, metacritic_score)
