@@ -16,6 +16,14 @@ There are a couple ways to establish a FK in a CREATE TABLE command
     2. We can combine that on the column info:
         <col name> INTEGER REFERENCES <other table>(id)
 
+What about (chain) deleting?
+    ON DELETE CASCADE
+    ON DELETE SET NULL
 
 
+
+
+
+                surprise uwu
+                uwus in the chat 👉👈
 */
