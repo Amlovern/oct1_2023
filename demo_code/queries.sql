@@ -67,3 +67,38 @@ ORDER BY metacritic_score DESC
 LIMIT 1;
 
 SELECT DISTINCT esrb_rating FROM games;
+
+
+
+SELECT AVG(metacritic_score) FROM games;
+SELECT COUNT(*) FROM games;
+SELECT MIN(metacritic_score) FROM games;
+SELECT MAX(metacritic_score) FROM games;
+
+SELECT SUM(sold_units) FROM games;
+SELECT TOTAL(sold_units) FROM games;
+
+SELECT SUM(metacritic_score) FROM games;
+SELECT TOTAL(metacritic_score) FROM games;
+
+SELECT AVG(metacritic_score), esrb_rating FROM games
+GROUP BY esrb_rating
+HAVING AVG(metacritic_score) >= 7.0;.
+
+
+SELECT games.name, release_year, genres.name FROM games
+JOIN genres ON (genres.id = games.genre_id)
+WHERE genres.name = 'RPG';
+
+SELECT name, release_year FROM games
+WHERE genre_id = (
+    SELECT id FROM genres
+    WHERE name = 'RPG'
+);
+
+
+SELECT name, release_year FROM games
+WHERE genre_id IN (
+    SELECT id FROM genres
+    WHERE name IN ('RPG', 'MOBA', 'FPS')
+);
