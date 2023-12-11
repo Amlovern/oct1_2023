@@ -58,5 +58,24 @@ Every time we add a UNIQUE constraint to a column, we are adding an index
     This allows SQL to quickly identify if the UNIQUE constraint passes or fails
 
 
+What is an N+1 query?
+    When we run an initial query, then iterate over those results and for each result, we run an additional query
+
+    SELECT * FROM games; -> 300
+    // loop over games
+        SELECT * FROM genres WHERE id = game.genre_id;
+        SELECT * FROM studios WHERE id = game.studio_id;
+
+    O(1 + n^m) where n is the num of results from initial query and m is the number of additional queries per initial query result
+
+During your time here at a/A, don't worry about efficiency. Focus on getting your code to work, then you can go back and refactor.
+!! LAZY LOAD YOUR AGGREGATE DATA !!
+
+
+SQL Injection Attacks
+    Injecting SQL into another person's app
+
+Biggest takeaways from today:
+    How to benchmark queries and how to recognize N+1 queries
 
 */
