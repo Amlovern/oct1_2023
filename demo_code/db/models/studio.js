@@ -19,7 +19,23 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     },
-    yearEstablished: DataTypes.INTEGER
+    yearEstablished: {
+      type: DataTypes.INTEGER,
+      validate: {
+        isInt: {
+          msg: 'Must be an integer.'
+        },
+        len: {
+          msg: 'Must be 4 digits',
+          args: [4,4]
+        },
+        maxYear(value) {
+          if (value > new Date().getFullYear()) {
+            throw new Error('Year cannot be in the future.')
+          }
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Studio',

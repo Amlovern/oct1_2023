@@ -89,6 +89,15 @@ File types:
     
     Database resetting script
         "dbreset": "npx dotenv sequelize db:seed:undo:all && npx dotenv sequelize db:migrate:undo:all && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all"
+
+    If we want our seeders to check against model validations:
+        We utilize the model's built-in bulkCreate method
+        First we import the model into our seed file
+        await <model>.bulkCreate([
+            <seed objs>
+        ], {validate: true})
+
+        bulkCreate instead of bulkInsert is highly recommended
     
 
 */
