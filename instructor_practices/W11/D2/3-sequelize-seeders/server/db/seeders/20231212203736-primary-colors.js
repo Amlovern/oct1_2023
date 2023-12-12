@@ -12,17 +12,12 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-  
-  const { Studio } = require('../models');
-  
-  await Studio.bulkCreate([
-     {name: 'Riot Games', yearEstablished: 2006},
-     {name: 'Mirrorsoft', yearEstablished: 1983},
-     {name: 'Nintendo', yearEstablished: 1989},
-     {name: 'KRAFTON', yearEstablished: 2007},
-     {name: 'Game Freak', yearEstablished: 1989},
-    //  {name: 'Test max', yearEstablished: 2222},
-    //  {name: 'Test len', yearEstablished: 198}
+   const { Color } = require('../models');
+
+   await Color.bulkCreate([
+    {name: 'red'},
+    {name: 'blue'},
+    {name: 'yellow'}
    ], {validate: true})
   },
 
@@ -33,6 +28,8 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Studios')
+    await queryInterface.bulkDelete('Colors', {
+      name: ['red', 'blue', 'yellow']
+    })
   }
 };
