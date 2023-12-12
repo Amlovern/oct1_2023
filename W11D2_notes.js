@@ -100,4 +100,14 @@ File types:
         bulkCreate instead of bulkInsert is highly recommended
     
 
+Using migrations for something other than creating table
+    Why move forward instead of refactoring?
+        Version Control
+        We don't want to roll back migrations and lose user data
+
+    We need to start by creating a new migration file
+        npx sequelize migration:generate --name <descriptive name>
+    If we set allowNull: false to the new column, we run into an error
+        We can get around this by setting a defaultValue property
+
 */
