@@ -52,14 +52,43 @@ File types:
             We are switching from snake_case to camelCase for our column names
             When we generate a model, a corresponding migration is also created
             Make sure that any changes we make to migrations, such as adding constraints, we need to add those changes to the model as well
+            Making changes to our model does NOT mean we need to run any additional commands
 
     Seeders
         For inserting initial starter data into the DB
+        CLI Commands:
+            npx sequelize seed:generate --name <name>
+                Creates a seed file
+            npx dotenv sequelize db:seed:all
+                Run all seeders that haven't been ran
+            npx dotenv sequelize db:seed:undo
+                Rolls back the most recent seed
+            npx dotenv sequelize db:seed:undo:all
+                Rolls back all seeders
+        Important Notes:
+            The seeder bulkInsert method tests against table constraints, but not against model constraints
 
     There are 2 types of commands:
         Commands that create files
         Commands that interact with the DB
             These require us to add "dotenv" to the command
+
+    queryInterface is an object built into Sequelize and has a ton of built-in methods
+
+    The seederStorage property in our config/database.js is what gives us the SequelizeData table in our DB
+
+    If we are resetting a table, we must unseed before we unmigrate
+        unseed
+            npx dotenv sequelize db:seed:undo:all
+        unmigrate
+            npx dotenv sequelize db:migrate:undo:all
+        migrate
+            npx dotenv sequelize db:migrate
+        seed
+            npx dotenv sequelize db:seed:all
+    
+    Database resetting script
+        "dbreset": "npx dotenv sequelize db:seed:undo:all && npx dotenv sequelize db:migrate:undo:all && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all"
     
 
 */
