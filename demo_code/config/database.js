@@ -4,7 +4,11 @@ module.exports = {
     dialect: 'sqlite', // specify RDBMS
     seederStorage: 'sequelize',
     benchmark: true, // prints the execution time to terminal
-    logQueryParameters: true, // model-level data type validation
+    logQueryParameters: true, // logs SQL query parameters to the terminal
+    typeValidation: true, // model-level data type validation
     // logging: false // prints SQL to terminal unless set to false
   }
 };
+
+// SELECT * FROM users WHERE first_name = 'Anthony';
+// SELECT * FROM users WHERE first_name = ?; "$1": 'Anthony'
