@@ -35,8 +35,24 @@ There are a variety of query methods built into our models
     If we want to use LIKE in our query:
         We can use the Op object from Sequelize
 
-    
 
+POST routes
+
+    Creating records
+        build
+            (validate)
+        save
+
+        create - Does all the other 3
+
+We have to destructure our req body
+To use build:
+    const <instance> = <model>.build({<data>})
+    await <instance>.validate()
+    await <instance>.save()
+
+To use create:
+    const <instance> = await <model>.create({<data>})
 
 
 

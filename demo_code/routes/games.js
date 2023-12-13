@@ -31,6 +31,42 @@ router.get('/:gameName', async (req, res) => {
     res.json(game)
 });
 
+router.post('/build', async (req, res) => {
+    const { name, releaseYear, esrbRating, soldUnits, description, genreId, online, metacriticScore } = req.body;
+
+    const newGame = Game.build({
+        name,
+        releaseYear,
+        esrbRating,
+        soldUnits,
+        description,
+        genreId,
+        online,
+        metacriticScore
+    });
+    await newGame.validate();
+    await newGame.save();
+
+    res.json(newGame)
+});
+
+router.post('/create', async (req, res) => {
+    const { name, releaseYear, esrbRating, soldUnits, description, genreId, online, metacriticScore } = req.body;
+
+    const newGame = await Game.create({
+        name,
+        releaseYear,
+        esrbRating,
+        soldUnits,
+        description,
+        genreId,
+        online,
+        metacriticScore
+    });
+
+    res.json(newGame);
+})
+
 
 
 
