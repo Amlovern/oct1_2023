@@ -27,7 +27,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       genreId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Genres',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       online: {
         type: Sequelize.BOOLEAN

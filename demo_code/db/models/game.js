@@ -10,7 +10,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Game.belongsTo(models.Genre, {
+        foreignKey: 'genreId'
+      })
+      // SELECT * FROM Games
+      // JOIN Genres ON (Games.genreId = Genres.id);
+
+      Game.belongsToMany(models.Studio, {
+        through: models.StudioGame,
+        foreignKey: 'gameId',
+        otherKey: 'studioId'
+      })
     }
   }
   Game.init({
