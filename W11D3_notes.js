@@ -75,6 +75,36 @@ There are multiple ways to Delete:
     <instance>.destroy()
 
 
+Relationships in Sequelize
+
+To tell Sequelize that a column is a FK, we need to add a couple properties to that column obj in Migration
+    references: {
+        model: <table name>,
+        key: 'id' (not needed unless the PK is something other than id)
+    },
+    onDelete: 'CASCADE' || 'SET NULL' (if desired)
+
+Next we have to connect our models, and this is done using Associations
+
+Associations
+    One to One
+        hasOne - not used much
+    One to Many
+        belongsTo
+        hasMany
+    Many to Many
+
+    We have to determine which is which and the order does matter
+    The model with the FK is the belongsTo
+    <model we are in>.<relationship>(models.<name of the model we are connecting to>, {
+        foreignKey: <name of the FK column used to connect>
+    })
+
+    We can implement onDelete:
+        We add some stuff to the hasMany
+            onDelete: 'CASCADE',
+            hooks: true
+    The hooks: true enforces that the deletions occur in the right order. If this is left off, we can still run into FK Constraint Failed errors
 
 
 */
