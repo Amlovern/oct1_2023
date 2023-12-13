@@ -55,6 +55,26 @@ To use create:
     const <instance> = await <model>.create({<data>})
 
 
+Updating/Deleting in Sequelize
+
+There are multiple ways to Update:
+    <model>.update - NOT recommended due to us running into a lot of issues
+        This requires a where
+    Object property reassignment - Major preference, and the one we will be using
+        Must save()
+    <instance>.update()
+    <instance>.set()
+        Must save()
+
+We want to make sure that we are not accidentally updating our properties to undefined.
+    This is done by checking the parts of the req.body to make sure they exist before updating
+
+
+There are multiple ways to Delete:
+    <model>.destroy() - NOT recommended for the same reasons as update
+    <instance>.destroy()
+
+
 
 
 */

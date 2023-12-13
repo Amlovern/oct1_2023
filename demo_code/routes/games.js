@@ -65,9 +65,37 @@ router.post('/create', async (req, res) => {
     });
 
     res.json(newGame);
-})
+});
 
+router.put('/:id', async (req, res) => {
+    const game = await Game.findByPk(req.params.id);
+    const { name, releaseYear, esrbRating, soldUnits, description, genreId, online, metacriticScore } = req.body;
 
+    if (name) {
+        game.name = name;
+    }
+    game.releaseYear = releaseYear || game.releaseYear;
+    esrbRating ? game.esrbRating = esrbRating : null;
+    game.soldUnits = soldUnits;
+    game.description = description;
+    game.genreId = genreId;
+    game.online = online;
+    game.metacriticScore = metacriticScore;
+
+    console.log(game)
+
+    await game.save();
+
+    res.json(game);
+});
+
+router.delete('/:id', async (req, res) => {
+    const game = await Game.findByPk(req.params.id);
+
+    await game.destroy();
+
+    res.json(game)
+});
 
 
 module.exports = router;
