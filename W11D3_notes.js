@@ -93,6 +93,7 @@ Associations
         belongsTo
         hasMany
     Many to Many
+        belongsToMany
 
     We have to determine which is which and the order does matter
     The model with the FK is the belongsTo
@@ -106,5 +107,34 @@ Associations
             hooks: true
     The hooks: true enforces that the deletions occur in the right order. If this is left off, we can still run into FK Constraint Failed errors
 
+    Many to Many:
+        <model you are in>.belongsToMany(models.<name of the model on the other side of the join table>, {
+            through: models.<name of model for join table>,
+            foreignKey: <FK to join to the join table>,
+            otherKey: <FK to join from join table to other table>
+        })
+
+Implementing these relationships into Express
+
+In our query obj, we need to add an include property that points to the model we want to join.
+Since we are referencing another model, we need to make sure and add that model to our import.
+        include: <model name>
+
+We can also add multiple models to the join by pointing the include property to an array     
+    include: [<model 1>, <model 2>]
+
+We can also point include to an obj or an array of objs
+    include: {
+        model: <model name>
+    }
+
+If we don't want any of the info from our join table, we can add a through property to one of our includes objects
+That through property with point to an object with attributes: []
+    include: {
+        model: <model name>,
+        through: {
+            attributes: []
+        }
+    }
 
 */
