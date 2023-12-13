@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Game } = require('../db/models');
+const { Game, Genre, Studio } = require('../db/models');
 const { Op } = require("sequelize");
 
 router.get('/', async (req, res) => {
@@ -11,6 +11,25 @@ router.get('/', async (req, res) => {
 
     res.json(games)
 });
+
+router.get('/associations', async (req, res) => {
+    const games = await Game.findAll({
+        include: [
+            {
+                model: Genre,
+                attributes: ['name']
+            },
+            {
+                model: Studio,
+                through: {
+                    attributes: []
+                }
+            }
+        ]
+    });
+
+    res.json(games)
+})
 
 router.get('/:id(\\d+)', async (req, res) => {
     const game = await Game.findByPk(req.params.id);
