@@ -31,6 +31,39 @@ router.get('/associations', async (req, res) => {
     res.json(games)
 })
 
+router.get('/associations/methods', async (req, res) => {
+    // const game = await Game.findByPk(1);
+    // const gameGenre = await game.getGenre({
+    //     attributes: ['id', 'name']
+    // });
+    // const genre = await Genre.findByPk(1);
+    // const newGame = await genre.createGame({
+    //     name: 'TEsting create',
+    //     releaseYear: 2022,
+    //     esrbRating: 'M',
+    //     soldUnits: 1234567,
+    //     description: 'This is a test',
+    //     online: true,
+    //     metacriticScore: 5.5
+    // });
+    const studio = await Studio.findByPk(1);
+    const game = await Game.findOne({
+        where: {
+            name: 'Tetris'
+        }
+    })
+    const newGameJoin = await studio.addGame(game.id)
+
+    res.json({
+        // game,
+        // gameGenre,
+        // genre,
+        // newGame,
+        studio,
+        newGameJoin
+    })
+})
+
 router.get('/:id(\\d+)', async (req, res) => {
     const game = await Game.findByPk(req.params.id);
 
