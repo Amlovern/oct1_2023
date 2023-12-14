@@ -31,13 +31,4 @@ We can use <instance>.toJSON() method to turns the result from a query into a JS
     This allows us to lazy load our aggregate data and then add it to the return from a data query
     This is useful for your project!!!
 
-
-
-
-
-
-
-
-
-
 */
