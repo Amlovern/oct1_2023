@@ -80,9 +80,18 @@ app.get('/cats/:catId', async (req, res, next) => {
         STEP 2C: Calculate the total price of all the toys that the cat is
         associated with
     */
-    let toyTotalPrice = 0;
-    toys.forEach(toy => {
-        toyTotalPrice += toy.price
+    // let toyTotalPrice = 0;
+    // toys.forEach(toy => {
+    //     toyTotalPrice += toy.price
+    // })
+
+    let toyTotalPrice = await Toy.sum('price', {
+        include: {
+            model: CatToy,
+            where: {
+                catId: cat.id
+            }
+        }
     })
 
     /*
