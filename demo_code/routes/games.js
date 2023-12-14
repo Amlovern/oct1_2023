@@ -29,7 +29,7 @@ router.get('/associations', async (req, res) => {
     });
 
     res.json(games)
-})
+});
 
 router.get('/associations/methods', async (req, res) => {
     // const game = await Game.findByPk(1);
@@ -62,7 +62,44 @@ router.get('/associations/methods', async (req, res) => {
         studio,
         newGameJoin
     })
-})
+});
+
+router.get('/aggregates', async (req, res) => {
+    const minScore = await Game.min('metacriticScore', {
+        where: {
+            esrbRating: 'T'
+        }
+    });
+    const maxScore = await Game.max('metacriticScore');
+    const numGames = await Game.count();
+    const allGames = await Game.findAll();
+    const numGames2 = allGames.length;
+    const totalSales = await Game.sum('soldUnits');
+    const avgSales = totalSales / numGames;
+    let bestGame = await Game.findOne({
+        where: {
+            metacriticScore: maxScore
+        }
+    });
+
+    bestGame = bestGame.toJSON();
+
+    bestGame.minScore = minScore;
+    bestGame.maxScore = maxScore;
+    bestGame.numGames = numGames;
+    bestGame.totalSales = totalSales;
+    bestGame.avgSales = avgSales;
+
+    // res.json({
+    //     minScore,
+    //     maxScore,
+    //     numGames,
+    //     totalSales,
+    //     avgSales,
+    //     bestGame
+    // })
+    res.json(bestGame)
+});
 
 router.get('/:id(\\d+)', async (req, res) => {
     const game = await Game.findByPk(req.params.id);
