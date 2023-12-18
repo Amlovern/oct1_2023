@@ -6,7 +6,9 @@ const gamesRouter = require('./routes/games');
 
 app.use(express.json());
 
-app.use('/games', gamesRouter)
+app.use('/styling', express.static('assets/css'));
+
+app.use('/games', gamesRouter);
 
 
 
