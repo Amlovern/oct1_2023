@@ -17,7 +17,16 @@ How do we handle edge cases?
             Then we can spread the pagination object into our query object
 
 
+Search Parameters
 
+To avoid running into the same DRY issue we were running into with pagination, we can establish a query object and pass that into the query
+    We can then check that a query string has been passed in, assigning that value to the queryObj.where
+
+Should take in a title query string and match partial names in the DB
+
+Should take in a minScore query string to filter out bad games
+
+Should take in a genre query string to find all games associated with the provided genre
 
 
 
