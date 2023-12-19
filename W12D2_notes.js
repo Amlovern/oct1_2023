@@ -29,7 +29,12 @@ Should take in a minScore query string to filter out bad games
 Should take in a genre query string to find all games associated with the provided genre
 
 
+Security
 
+CORS - Cross-Origin Resource Sharing
+    Allows other apps to send requests to our API
+    CORS policies are just middleware
+    !! Enforced by the browser !!
 
 
 
