@@ -59,6 +59,13 @@ app.get('/search', async(req, res) => {
     });
 
     res.json(allGames)
+});
+
+app.get('/scopes', async (req, res) => {
+    const minScore = req.body.minScore;
+    const allGames = await Game.scope(['defaultScope', 'nameYearScore', {method: ['minScore', minScore]}]).findAll();
+
+    res.json(allGames)
 })
 
 
