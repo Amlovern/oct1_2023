@@ -26,6 +26,44 @@ Scopes
                 {method: [<scope name>, <args>]}
 
 
+JWT - JSON Web Token
+    This is how we handle User Auth
+    If we want to log a user in, we create a token. If we want to log a user out, delete that token.
+
+How can we keep data safe as we transport it across the web?
+    Encode
+        Not very secure. Can easily be decoded.
+    Encrypt
+        More secure. Can't be decrypted unless they have the password/secret key
+        If a bad user gets the secret key, we are in trouble
+    Hash
+        Cannot be reverse-engineered
+        Hashing is deterministic
+        There is a problem: There is a possibility that multiple strings could end up hashing to the same value
+            This is called a hash collision
+        Rainbow Table
+            These are tables of exposed emails/usernames as well as common passwords with their hashed version
+            Malicious users will use Rainbow Tables to brute force logins
+        We can use something called a Salt to avoid the hash collision issue
+
+JWTs
+    Consists of 3 parts:
+        Header
+            Contains the type of token
+            Indicator for the algo that was used for the hash
+            JWT will automatically set these
+        Payload
+            The data we are transmitting
+            Can add claims - such as an expiration
+            ONLY encoded
+        Signature
+            Hash of the header, payload, and a secret key
+            Allows us to validate that our token hasn't been tampered with
+
+        jwt.verify returns the payload if the token is valid
+        Can also take in a 3rd arg, which is a callback function
+
+
 
 
 
