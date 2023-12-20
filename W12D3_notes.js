@@ -64,6 +64,13 @@ JWTs
         Can also take in a 3rd arg, which is a callback function
 
 
+Bcrypt
+    A package that we will use to hash stuff such as passwords
+    The hash provided consists of algo, cost, salt (22 chars), and hash
+
+    The cost factor tells bcrypt how many times to hash the password
+    We don't want to set the cost factor too high
+        Around 12-13 is the recommendation
 
 
 
