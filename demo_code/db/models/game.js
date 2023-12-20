@@ -1,6 +1,7 @@
 'use strict';
 const {
-  Model
+  Model,
+  Op
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Game extends Model {
@@ -39,6 +40,25 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Game',
+    defaultScope: {
+      attributes: {
+          exclude: ['createdAt', 'updatedAt', 'releaseYear']
+      }
+    },
+    scopes: {
+      nameYearScore: {
+        attributes: ['name', 'releaseYear', 'metacriticScore']
+      },
+      minScore(score) {
+        return {
+          where: {
+            metacriticScore: {
+              [Op.gte]: score
+            }
+          }
+        }
+      }
+    }
   });
   return Game;
 };
